@@ -38,9 +38,44 @@ CongTemp$Congruence<-revalue(CongTemp$Congruence,
 head(CongTemp)
 
 
-
 temp<-dcast(CongTemp, DataType + SubNo ~ Congruence, 
       fun.aggregate = mean, na.rm = TRUE)
+
+CongTemp<-temp
+
+## 2_1 Normality_Correlation_TwoSampleTests
+##  Independent practice Question 2 (correlation)
+
+temp<-CongTemp
+CongTemp<-temp<-dcast(CongTemp, DataType + SubNo ~ Congruence, 
+      fun.aggregate = mean, na.rm = TRUE)
+
+par(mfrow=c(2,2))
+hist(CongTemp$Congruent)
+qqnorm(CongTemp$Congruent)
+qqline(CongTemp$Congruent)
+hist(CongTemp$Incongruent)
+qqnorm(CongTemp$Incongruent)
+qqline(CongTemp$Incongruent)
+#Not normally distributed - $Congruent RT especially
+
+x<-CongTemp
+names(x)
+par(mfrow=c(1,1))
+#scatterplot
+plot(x$Congruent,x$Incongruent)
+#using cor function
+cor(x$Congruent,x$Incongruent,method="spearman")
+
+
+#using rcorr from Hmisc
+#change to data matrix first (have to extract columns with numbers- columns 3 and 4)
+x<-data.matrix(x[,3:4])
+head(x) #only columns 1 and 2 need to be used
+rcorr(x[,1:2],type="spearman")
+
+
+
 
 
 
