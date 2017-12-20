@@ -89,7 +89,17 @@ library(psych)
 #look at orginal data
 head(dat)
 #get descriptive statistics for MeanRT by levels/conditions in Congruence
+#this code takes descriptive statistics from the raw data, not the subject average data
 describeBy(dat$MeanRT,list(dat$Congruence))
+#this code would give descriptive stats for the averaged data
+mean(temp$Congruent)
+mean(temp$Incongruent)
+sd(temp$Congruent)
+sd(temp$Incongruent)
+min(temp$Congruent)
+min(temp$Incongruent)
+max(temp$Congruent)
+max(temp$Incongruent)
 
 
 
