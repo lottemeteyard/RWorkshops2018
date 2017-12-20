@@ -79,7 +79,7 @@ t.test(temp$Congruent,temp$Incongruent,paired = TRUE)
 #set up one plotting window
 par(mfrow=c(1,1))
 #boxplot with titles and axes labelled
-boxplot(temp$Congruent,temp$Incongruent, title = "Congruent vs Incongruent RTs", ylab = "Mean RT",
+boxplot(temp$Congruent,temp$Incongruent, main = "Congruent vs Incongruent RTs", ylab = "Mean RT",
         names = c("Congruent", "Incongruent"), xlab = "Condition")
 
 #descriptive statistics
